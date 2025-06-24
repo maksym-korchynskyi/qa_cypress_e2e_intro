@@ -10,7 +10,7 @@ describe('Sign In page', () => {
   it('should provide an ability to log in', () => {
     const { username, email, password } = generateUser();
 
-    cy.request('POST', cy.config('baseUrl') + '/api/users', {
+    cy.request('POST', '/api/users', {
       user: {
         username,
         email,
@@ -22,7 +22,7 @@ describe('Sign In page', () => {
       cy.contains('button[type="submit"]', 'Sign in').should('exist').click();
 
       cy.contains('a', username).should('exist');
-      cy.url().should('equal', cy.config('baseUrl') + '/');
+      cy.url().should('equal', Cypress.config('baseUrl') + '/');
     });
   });
 });
